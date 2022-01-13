@@ -26,9 +26,7 @@ public class TestDb {
 					+ "WHERE shape <> '' "
 					+ "ORDER BY shape ASC";
 			
-			PreparedStatement st = conn.prepareStatement(sql); // preparo lo statament
-			
-			
+			PreparedStatement st = conn.prepareStatement(sql); // preparo lo statament		
 			
 			ResultSet res = st.executeQuery(); // eseguo la Query 
 	        
@@ -43,12 +41,12 @@ public class TestDb {
 			
 			String sql2 = "SELECT count(*) AS cnt "
 				   +	"FROM sighting "
-				   +	"WHERE shape = ? ";
+				   +	"WHERE shape = ? ";//contiene un parametro
 			
 			String shapeScelta = "circle";
 			
 			PreparedStatement st2 = conn.prepareStatement(sql2);
-			st2.setString(1, shapeScelta);
+			st2.setString(1, shapeScelta); // 1 indica il primo parametro e lo sostituisce la stringa shapeScelte
 			ResultSet res2 = st2.executeQuery();
 			res2.first();//posiziono il cursore sulla prima riga
 			int count = res2.getInt("cnt");
